@@ -24,17 +24,17 @@ body{
     margin: 50px auto;
     display: flex;
     justify-content: center;
+    padding: 25px 20px;
 }
 
 .calc__inner{
     width: 324px;
     height: 532px;
     background-color: inherit;
-    margin: 25px 20px;
 }
 
 .calc__output{
-    width: 324px;
+    width: 100%;
     height: 96px;
     background-color: inherit;
     font-style: normal;
@@ -42,6 +42,7 @@ body{
     font-size: 96px;
     line-height: 96px;
     color: var(--calc-numbers);  
+    margin-bottom: 12px;
 }
 
 .number__output{
@@ -49,9 +50,9 @@ body{
 }
 
 .calc__buttons-inner{
-    width: 324px;
-    height: 440px;
-    padding-top: 13px;
+    width: 100%
+    height: 100%
+    padding-top: 16px;
     background-color: inherit;
     display: grid;
     grid-template-columns: repeat(4,1fr);
@@ -60,8 +61,8 @@ body{
 }
 
 .buttons{
-    width: 69px;
-    height: 72px;
+    width: 100%;
+    height: 100%;
     border-radius: 24px;
     background-color: var(--calc-num-buttons);
     font-style: normal;
