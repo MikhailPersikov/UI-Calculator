@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Work Sans', sans-serif;
+    background-color: #edf3f3;
+}
+
+:root{
+    --calc-background:#17171C;
+    --calc-num-buttons:#2E2F38;
+    --calc-operators:#4B5EFC;
+    --calc-clear-button:#4E505F;
+    --calc-numbers:#FFFFFF;
+}
+
+.container{
+    width: 364px;
+    height: 582px;
+    background-color: var(--calc-background);
+    margin: 50px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.calc__inner{
+    width: 324px;
+    height: 532px;
+    background-color: inherit;
+    margin: 25px 15px 25px 25px;
+}
+
+.calc__output{
+    width: 324px;
+    height: 96px;
+    background-color: inherit;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 96px;
+    line-height: 96px;
+    color: var(--calc-numbers);  
+}
+
+.number__output{
+    float: right;
+}
+
+.calc__buttons-inner{
+    width: 324px;
+    height: 440px;
+    padding-top: 16px;
+    background-color: inherit;
+    display: grid;
+}
+
+.buttons{
+    width: 69px;
+    height: 72px;
+    border-radius: 24px;
+    background-color: var(--calc-num-buttons);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 72px;
+    text-align: center;
+    color:var(--calc-numbers);
+    cursor:pointer;
+}
+
+.buttons:focus{
+    color: red;
+}
+
+.buttons:hover{
+    background-color: #40424e;
+}
+
+.operator{
+    background-color: var(--calc-operators);
+}
+
+.operator:hover{
+    background-color: #7baaf7;
+}
+
+.clear{
+    background-color: var(--calc-clear-button);
+    width:150px;
+}
+
+.clear:hover{
+    background-color: #5d5f6e;
+}
+
+.zero{
+    width:230px;
+}
+
+.section__one{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+}
+
+.section__two{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.section__three{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.section__four{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.section__five{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
