@@ -51,7 +51,7 @@ body{
 .calc__buttons-inner{
     width: 324px;
     height: 440px;
-    padding-top: 16px;
+    padding-top: 13px;
     background-color: inherit;
     display: grid;
     grid-template-columns: repeat(4,1fr);
