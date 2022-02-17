@@ -95,9 +95,7 @@ function calc(){
     console.log(numbersArray);
 }
 
-// let display ='123213+123123'
-
-// let arr = [1,2,3,4,+,2,3,3,2];
+// × ÷
 
 
 
