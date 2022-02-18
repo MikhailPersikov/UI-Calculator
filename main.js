@@ -1,109 +1,112 @@
-const numbersArray = [];
-const operators = [];
+const buttons = document.querySelectorAll('.number')
+const multi = document.querySelector('.mult')
+const sub = document.querySelector('.sub')
+const sum = document.querySelector('.sum')
+const div = document.querySelector('.div')
+const deleteNumber = document.querySelector('.del')
+const reload = document.querySelector('.reset')
+const result = document.querySelector('.equality')
+const answer = document.querySelector('.number__output')
 
-const display = document.querySelector('.display__span');
-const equality = document.querySelector('.equality');
-const numbers = document.querySelectorAll('.numbers');
-const reset = document.querySelector('.reset');
-const del = document.querySelector('.del');
-const show = document.querySelector('.show');
-const sum = document.querySelector('.sum');
-const sub = document.querySelector('.sub');
-const dev = document.querySelector('.dev');
-const mult = document.querySelector('.mult');
+let operation = undefined;
+let operandOne = null;
+let operandTwo = null;
 
-sub.addEventListener('click',subF);
-sum.addEventListener('click',sumF);
-dev.addEventListener('click',devF);
-mult.addEventListener('click',multF);
+for (let button of buttons) {
+    button.addEventListener('click', function () {
+        if (!operandOne) {
+            answer.textContent === '0' ? answer.textContent = button.textContent : answer.textContent += button.textContent
+        } else {
+            operandTwo ? operandTwo = answer.textContent += button.textContent : operandTwo = answer.textContent = button.textContent
+        }
+        if (answer.textContent.length > 7) {
+            answer.textContent = answer.textContent.slice(0, 7)
+        }
+    })
+}
 
-equality.addEventListener('click',calc);
-reset.addEventListener('click',resetF);
-del.addEventListener('click',delF);
-show.addEventListener('click',showAll);
-
-numbers.forEach(numbers => {
-    numbers.onclick = getValue;
+div.addEventListener('click', function () {
+    operation = 'div'
+    isOperationCalc(operation)
 })
 
-function delF(){
-    // console.log(numbersArray,'start')
-    numbersArray.pop()
-    display.textContent = numbersArray.join('')
-    // console.log(numbersArray,'end')
-    if(numbersArray.length === 0) display.textContent =''
+multi.addEventListener('click', function () {
+    operation = 'multi'
+    isOperationCalc(operation)
+})
+
+sub.addEventListener('click', function () {
+    operation = 'sub'
+    isOperationCalc(operation)
+})
+
+sum.addEventListener('click', function () {
+    operation = 'sum'
+    isOperationCalc(operation)
+})
+
+function isOperationCalc(operation) {
+    const isValidOperand = operandOne && operandTwo && operation
+    if (isValidOperand) {
+        answer.textContent = calc(operation, operandOne, operandTwo)
+    }
+    if (!operandOne) {
+        operandOne = answer.textContent
+    }
 }
 
-function showAll(){
-    // display.textContent = 'hello =)'
-    // if (numbersArray[numbersArray.length-1] == '+') console.log('work')
-    console.log(numbersArray,'number')
-    console.log(operators,'number')
+function calc(operation, one, two) {
+
+    const operators = {
+        'sum': +one + +two,
+        'multi': one * two,
+        'sub': one - two,
+        'div': one / two,
+    }
+
+    const result = operators[operation]
+    return isFinite(result) ? result : 'Error'
 }
 
-function resetF(){
-    display.innerText = 0;
-    numbersArray.splice(0,numbersArray.length)
-    // console.log(numbersArray)
+result.addEventListener('click', resultCalc)
+
+function resultCalc() {
+    const isValidOperand = operandOne && operandTwo && operation
+    if (isValidOperand) {
+        answer.textContent = calc(operation, operandOne, operandTwo)
+        operandOne = answer.textContent
+        operandOne = null
+        operandTwo = null
+        operation = undefined
+    }
+    if (answer.textContent.length > 7) {
+        answer.style.fontSize = '28px'
+    }
 }
 
-function getValue(){
-    const startValue = display.innerText;
-    let value = this.innerText;
-    if(startValue === '0') display.innerText = ''
-    let test = numbersArray.push(value)
-    let displayValue = display.innerHTML = numbersArray.join('');
-    console.log(numbersArray)
+deleteNumber.addEventListener('click', deleteNum)
+
+function deleteNum() {
+    if (answer.textContent.length === 1) {
+        answer.textContent = '0'
+        operandOne = null
+        operandTwo = null
+        operation = null
+        answer.style.fontSize = '80px'
+    } else if (!operation) {
+        answer.textContent = answer.textContent.slice(0, -1)
+    } else if (operation) {
+        operandTwo = operandTwo.slice(0, -1)
+        answer.textContent = operandTwo
+    }
 }
 
-function multF(){
-    operators.splice(0,numbersArray.length)
-    operators.push('*')
+reload.addEventListener('click', resetCalc)
+
+function resetCalc() {
+    answer.textContent = '0'
+    operation = null
+    operandOne = null
+    operandTwo = null
+    answer.style.fontSize = '80px'
 }
-
-function devF(){
-    operators.splice(0,numbersArray.length)
-    operators.push('/')
-}
-
-function sumF(){
-    operators.splice(0,numbersArray.length)
-    operators.push('+')
-}
-
-function subF(){
-    operators.splice(0,numbersArray.length)
-    operators.push('-')
-}
-
-function calc(){
-    let findOperatorIndex = numbersArray.indexOf(operators[0]);
-    let num1q = numbersArray.splice(0,findOperatorIndex).join('');
-    let deleteOp = numbersArray.shift();
-    let num2q = numbersArray.join('')
-    let result;
-
-    if (operators[0] === '+') result = +num1q + +num2q;
-    if (operators[0] === '-') result = +num1q - +num2q;
-    if (operators[0] === '*') result = +num1q * +num2q;
-    if (operators[0] === '') result = +num1q / +num2q;
-
-    console.log(result);
-    numbersArray.splice(0,numbersArray.length)
-    display.innerText = result;
-    numbersArray.push(result);
-    console.log(numbersArray);
-}
-
-// × ÷
-
-
-
-
-
-
-
-
-
-
-

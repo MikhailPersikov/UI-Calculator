@@ -89,17 +89,21 @@ body{
     background-color: #7baaf7;
 }
 
-.clear{
+.reset{
     background-color: var(--calc-clear-button);
     width:150px;
     grid-column: 1/3;
 }
 
-.clear:hover{
+.reset:hover{
     background-color: #5d5f6e;
 }
 
 .zero{
     width:230px;
     grid-column: 1/4;
+}
+
+.show{
+    cursor:pointer;
 }
